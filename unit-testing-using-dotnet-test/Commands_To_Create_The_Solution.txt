@@ -1,0 +1,19 @@
+https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test
+
+dotnet new sln -o unit-testing-using-dotnet-test
+cd unit-testing-using-dotnet-test
+dotnet new classlib -o PrimeService
+ren .\PrimeService\Class1.cs PrimeService.cs
+dotnet sln add ./PrimeService/PrimeService.csproj
+
+dotnet new xunit -o XPrimeService.Tests
+dotnet add ./XPrimeService.Tests/XPrimeService.Tests.csproj reference ./PrimeService/PrimeService.csproj
+dotnet sln add ./XPrimeService.Tests/XPrimeService.Tests.csproj
+
+dotnet new mstest -o MsPrimeService.Tests
+dotnet add ./MsPrimeService.Tests/MsPrimeService.Tests.csproj reference ./PrimeService/PrimeService.csproj
+dotnet sln add ./MsPrimeService.Tests/MsPrimeService.Tests.csproj
+
+dotnet new nunit -o NPrimeService.Tests
+dotnet add ./NPrimeService.Tests/NPrimeService.Tests.csproj reference ./PrimeService/PrimeService.csproj
+dotnet sln add ./NPrimeService.Tests/NPrimeService.Tests.csproj
